@@ -1,0 +1,103 @@
+<html>
+
+<head>
+
+    <title>Student Results</title>
+    <script type="text/javacript" src="q5_students_result_card.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function go() {
+
+            var result = "";  //declare a variable for result
+
+            //read the marks
+            var grammarMarks = document.getElementById('txtGrammar').value;
+            var accountMarks = document.getElementById('txtAccount').value;
+            var physicsMarks = document.getElementById('txtPhysics').value;
+            if (grammarMarks > '100' || accountMarks > '100' || physicsMarks > '100' ) {
+                alert("Invalid input")
+            }
+            else {
+                var totalMarks = grammarMarks - (-accountMarks) - (- physicsMarks);
+
+                var percentage = (totalMarks / 200) * 100;
+
+                if (percentage > 40) {
+                    result = 'Pass';
+                }
+                else {
+                    result = 'Fail';
+                }
+
+                //display the results   
+                document.getElementById('txtStudentName').value = document.getElementById('txtName').value;
+                document.getElementById('txtTotalMarks').value = totalMarks;
+                document.getElementById('txtPerMarks').value = percentage;
+                document.getElementById('txtResult').value = result;
+            }
+        }
+    </script>
+    <fieldset style="width:600px">
+        <legend>
+            <b>Student Input Section:</b>
+        </legend>
+        Name:
+        <input type="text" id="txtName">
+        <table border="1">
+            <tr>
+                <td>Grammar</td>
+                <td>
+                    <input type="text" id="txtGrammar">
+                </td>
+            </tr>
+            <tr>
+                <td>Account</td>
+                <td>
+                    <input type="text" id="txtAccount">
+                </td>
+            </tr>
+            <tr>
+                <td>Physics</td>
+                <td>
+                    <input type="text" id="txtPhysics">
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <br/>
+        <input type="button" value="Get Result" onclick="go()">
+    </fieldset>
+
+    <h2>Report Card</h2>
+
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>
+                <input type="text" id="txtStudentName" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>Total Marks</td>
+            <td>
+                <input type="text" id="txtTotalMarks" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>Percentage</td>
+            <td>
+                <input type="text" id="txtPerMarks" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>Remarks</td>
+            <td>
+                <input type="text" id="txtResult" readonly>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
